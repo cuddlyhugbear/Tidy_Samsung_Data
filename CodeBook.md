@@ -30,7 +30,20 @@ There were several files contained in the original data set; only a subset (list
 ## Creating the tidy datafile
 
 ### Guide to create the tidy data file
+- Download the data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+- Read in each of the files (listed above)
+- Combine the test and training data into a master dataset
+- Merge the master dataset with the activity_labels.txt file to get a human readable label for each activity
+- Subset the columns by taking anything that contains the word "mean" or "std" as well as the subject_id and activity_name fields
+- Melt the data; the id fields are subject_id and activity_name; the measure.vars are the remainder of the fields
+- Group the melted data by subject_id, activity_name, and variable (from the melt)
+- Produce the final output by summarizing the grouped data; mean(value)
 
+### Description of the variables output.txt
+- subject_id: id representing the participant in the subject
+- activity_name: the activity performed by the participant
+- variable: human readable name of the attribute being averaged, see features.txt for full list
+- mean(value): average of the variable for that grouping of the subject_id, activity_name
 
-### Cleaning of the data
-
+## Sources
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
